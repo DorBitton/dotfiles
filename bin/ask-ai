@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# ask-ai / ?? - Unix Pipeable AI CLI using Google Antigravity (Gemini)
+# ==============================================================================
+set -euo pipefail
+
+MODEL="${AGY_MODEL:-gemini-3.7-flash-high}"
+
+PROMPT=""
+if [ -t 0 ]; then
+    # Interactive arguments
+    PROMPT="$*"
+else
+    # Piped input from stdin
+    PIPED_INPUT=$(cat)
+    if [ -n "$*" ]; then
+        PROMPT="$*
+
+--- Input ---
+$PIPED_INPUT"
+    else
+        PROMPT="$PIPED_INPUT"
+    fi
+fi
+
+if [ -z "$PROMPT" ]; then
+    echo "Usage: ?? \"your question\"  OR  cat file.txt | ?? \"instruction\"" >&2
+    exit 1
+fi
+
+if command -v agy &>/dev/null; then
+    agy --model "$MODEL" -p "$PROMPT"
+elif command -v claude &>/dev/null; then
+    claude -p "$PROMPT"
+else
+    echo "Error: Neither 'agy' (Antigravity/Gemini) nor 'claude' CLI was found." >&2
+    exit 1
+fi
