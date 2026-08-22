@@ -230,3 +230,7 @@ help-pe() {
 ================================================================================
 PE_EOF
 }
+
+# Antigravity CLI with auto-approved tool permissions
+alias agy-y='agy --dangerously-skip-permissions'
+alias agya='agy --dangerously-skip-permissions'
