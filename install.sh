@@ -6,7 +6,7 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOCAL_BIN="$HOME/.local/bin"
-mkdir -p "$LOCAL_BIN" "$HOME/bin" "$HOME/go/bin" "$HOME/.config/alacritty" "$HOME/.config/nvim"
+mkdir -p "$LOCAL_BIN" "$HOME/bin" "$HOME/go/bin" "$HOME/.config/alacritty" "$HOME/.config/nvim" "$HOME/.claude" "$HOME/.gemini/config"
 
 echo "============================================================"
 echo " 🚀 Setting up Sovereign 2026 CLI Environment"
@@ -103,6 +103,15 @@ ln -sf "$DOTFILES_DIR/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacrit
 
 # Link ask-ai
 install -m 755 "$DOTFILES_DIR/bin/ask-ai" "$LOCAL_BIN/ask-ai"
+
+# Link AI Agent Instructions (Claude Code & Gemini / Antigravity)
+mkdir -p "$HOME/.claude" "$HOME/.gemini/config"
+backup_if_exists "$HOME/.claude/CLAUDE.md"
+ln -sf "$DOTFILES_DIR/ai/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+backup_if_exists "$HOME/.gemini/config/GEMINI.md"
+ln -sf "$DOTFILES_DIR/ai/AGENTS.md" "$HOME/.gemini/config/GEMINI.md"
+backup_if_exists "$HOME/.gemini/config/AGENTS.md"
+ln -sf "$DOTFILES_DIR/ai/AGENTS.md" "$HOME/.gemini/config/AGENTS.md"
 
 # ------------------------------------------------------------------------------
 # 5. Setup Neovim (LazyVim)

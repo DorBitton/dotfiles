@@ -41,12 +41,12 @@ parse_git_branch() {
     local branch
     branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
     if [ -n "$branch" ]; then
-        echo -e "\033[38;5;214m($branch)\033[00m "
+        echo -e "\001\033[38;5;214m\002($branch)\001\033[00m\002 "
     fi
 }
 
 # Color palette: Catppuccin / Minimal Dark
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] $(parse_git_branch)\$ '
+PS1='\[\033[01;34m\]\w\[\033[00m\] $(parse_git_branch)❯ '
 
 # ------------------------------------------------------------------------------
 # Source Aliases & Helpers
