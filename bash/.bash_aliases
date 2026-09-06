@@ -68,7 +68,7 @@ help-all() {
                     AVAILABLE LEARNING CHEAT SHEETS
 ================================================================================
   help-vim        -> Vim & Neovim survival guide (modes, saving, navigation)
-  help-tmux       -> Tmux keybindings (splits, navigation, windows, copy mode)
+  help-tmux       -> Tmux guide (sessions, windows, splits, copy mode)
   help-containers -> Docker sandboxes & DevPod isolated development guide
   help-pe         -> Bash Parameter Expansion reference (${VAR:-def}, etc.)
 ================================================================================
@@ -173,28 +173,44 @@ VIM_EOF
 help-tmux() {
     cat << 'TMUX_EOF'
 ================================================================================
-                    TMUX DEFAULT KEYBINDINGS (Prefix: Ctrl-b)
+                    TMUX GUIDE & CHEAT SHEET (Prefix: Ctrl-b)
 ================================================================================
-Panes & Splits:
-  Ctrl-b %      : Split pane Vertically (left / right)
-  Ctrl-b "      : Split pane Horizontally (top / bottom)
-  Ctrl-b <arrow>: Move focus between panes
-  Ctrl-b h/j/k/l: Move focus (Vi navigation)
-  Ctrl-b z      : Toggle Zoom (maximize/minimize active pane)
-  Ctrl-b x      : Kill active pane
 
-Windows (Tabs):
-  Ctrl-b c      : Create new window
-  Ctrl-b 1..9   : Jump directly to window N
-  Ctrl-b n / p  : Next / Previous window
-  Ctrl-b ,      : Rename current window
-  Ctrl-b w      : Interactive window/session switcher list
+1. SESSION MANAGEMENT (Terminal Commands):
+   t                           -> Attach to last session or start a new one
+   tn <name>                   -> Create a new named session (tmux new -s <name>)
+   tl                          -> List active sessions (tmux ls)
+   tmux attach -t <name>       -> Attach to a specific session
+   tmux kill-session -t <name> -> Kill a specific session
+   tmux kill-server            -> Kill all sessions and stop tmux server
 
-Sessions & Clipboard:
-  Ctrl-b d      : Detach from current session (reconnect with 'tmux attach')
-  Ctrl-b [      : Enter Copy mode (press 'v' to select, 'y' to yank to OS clipboard)
-  Ctrl-b P      : Paste buffer
-  Ctrl-b s      : Interactive session list
+2. SESSION MANAGEMENT (Inside Tmux):
+   Ctrl-b d                    -> Detach (leaves session running in background)
+   Ctrl-b s                    -> Interactive session list (switch sessions)
+   Ctrl-b $                    -> Rename current session
+   Ctrl-b ( / )                -> Switch to previous / next session
+   Ctrl-b :new -s <name>       -> Create and switch to new session from inside
+
+3. WINDOWS (Tabs inside a session):
+   Ctrl-b c                    -> Create new window (tab)
+   Ctrl-b 1..9                 -> Jump directly to window N
+   Ctrl-b n / p                -> Next / Previous window
+   Ctrl-b ,                    -> Rename current window
+   Ctrl-b w                    -> Interactive window and session tree list
+   Ctrl-b &                    -> Kill current window
+
+4. PANES & SPLITS (Splits inside a window):
+   Ctrl-b %                    -> Split pane vertically (left / right)
+   Ctrl-b "                    -> Split pane horizontally (top / bottom)
+   Ctrl-b <arrow> / h,j,k,l    -> Move focus between panes
+   Ctrl-b z                    -> Toggle Zoom (maximize / minimize active pane)
+   Ctrl-b x                    -> Kill active pane
+
+5. COPY MODE & CLIPBOARD:
+   Ctrl-b [                    -> Enter Copy mode (scroll with arrows / Vi keys)
+   v                           -> Start selection (while in Copy mode)
+   y / Enter                   -> Yank to system clipboard and exit Copy mode
+   Ctrl-b P                    -> Paste tmux buffer
 ================================================================================
 TMUX_EOF
 }
