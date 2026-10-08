@@ -20,7 +20,7 @@ if command -v apt-get &>/dev/null; then
     sudo apt-get update -y
     sudo apt-get install -y \
         curl wget git tmux neovim fzf ripgrep fd-find bat eza btop \
-        xclip w3m w3m-img golang-go nodejs alacritty
+        xclip wl-clipboard w3m w3m-img golang-go nodejs alacritty
 fi
 
 # Fix Debian/Ubuntu binary name aliases for bat and fd

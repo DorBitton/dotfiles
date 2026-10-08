@@ -67,3 +67,6 @@ fi
 export EDITOR="nvim"
 export VISUAL="nvim"
 . "$HOME/.cargo/env"
+source <(kubectl completion bash)
+alias k=kubectl
+complete -o default -F __start_kubectl k

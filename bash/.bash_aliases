@@ -4,14 +4,14 @@
 
 # Directory listing & Navigation
 if command -v eza &>/dev/null; then
-    alias ls='eza --icons=auto --group-directories-first'
-    alias ll='eza -lh --icons=auto --group-directories-first --git'
-    alias la='eza -lah --icons=auto --group-directories-first --git'
-    alias lt='eza --tree --level=2 --icons=auto'
+  alias ls='eza --icons=auto --group-directories-first'
+  alias ll='eza -lh --icons=auto --group-directories-first --git'
+  alias la='eza -lah --icons=auto --group-directories-first --git'
+  alias lt='eza --tree --level=2 --icons=auto'
 else
-    alias ls='ls --color=auto'
-    alias ll='ls -lh --color=auto'
-    alias la='ls -lah --color=auto'
+  alias ls='ls --color=auto'
+  alias ll='ls -lh --color=auto'
+  alias la='ls -lah --color=auto'
 fi
 
 alias ..='cd ..'
@@ -51,10 +51,10 @@ alias ask='ask-ai'
 # Disposable Container Sandbox Helper
 # ==============================================================================
 sandbox() {
-    local img="${1:-ubuntu:latest}"
-    echo "🚀 Starting disposable sandbox: $img"
-    echo "💡 Note: This is 100% isolated. Type 'exit' to destroy container."
-    docker run --rm -it -v "$PWD":/workspace -w /workspace "$img" bash 2>/dev/null || \
+  local img="${1:-ubuntu:latest}"
+  echo "🚀 Starting disposable sandbox: $img"
+  echo "💡 Note: This is 100% isolated. Type 'exit' to destroy container."
+  docker run --rm -it -v "$PWD":/workspace -w /workspace "$img" bash 2>/dev/null ||
     docker run --rm -it -v "$PWD":/workspace -w /workspace "$img" sh
 }
 
@@ -63,7 +63,7 @@ sandbox() {
 # ==============================================================================
 
 help-all() {
-    cat << 'ALL_EOF'
+  cat <<'ALL_EOF'
 ================================================================================
                     AVAILABLE LEARNING CHEAT SHEETS
 ================================================================================
@@ -78,7 +78,7 @@ alias help-menu='help-all'
 alias help-me='help-all'
 
 help-containers() {
-    cat << 'CONTAINER_EOF'
+  cat <<'CONTAINER_EOF'
 ================================================================================
             CONTAINERS & DEVPOD GUIDE (ISOLATED WORKSPACES)
 ================================================================================
@@ -119,7 +119,7 @@ alias help-devpod='help-containers'
 alias help-sandbox='help-containers'
 
 help-vim() {
-    cat << 'VIM_EOF'
+  cat <<'VIM_EOF'
 ================================================================================
                     VIM / NEOVIM SURVIVAL GUIDE (WEEK 1)
 ================================================================================
@@ -171,7 +171,7 @@ VIM_EOF
 }
 
 help-tmux() {
-    cat << 'TMUX_EOF'
+  cat <<'TMUX_EOF'
 ================================================================================
                     TMUX GUIDE & CHEAT SHEET (Prefix: Ctrl-b)
 ================================================================================
@@ -216,7 +216,7 @@ TMUX_EOF
 }
 
 help-pe() {
-    cat << 'PE_EOF'
+  cat <<'PE_EOF'
 ================================================================================
                     BASH PARAMETER EXPANSION CHEAT SHEET
 ================================================================================
@@ -250,3 +250,6 @@ PE_EOF
 # Antigravity CLI with auto-approved tool permissions
 alias agy-y='agy --dangerously-skip-permissions'
 alias agya='agy --dangerously-skip-permissions'
+
+# SSH
+alias ssh-dor="ssh -i /home/dor/.ssh/laptop_ssh 'dor@192.168.100.134'"
