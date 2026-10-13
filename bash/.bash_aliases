@@ -71,6 +71,7 @@ help-all() {
   help-tmux       -> Tmux guide (sessions, windows, splits, copy mode)
   help-containers -> Docker sandboxes & DevPod isolated development guide
   help-pe         -> Bash Parameter Expansion reference (${VAR:-def}, etc.)
+  help-leetcode   -> LeetCode.nvim workflow, commands & Git tracking guide
 ================================================================================
 ALL_EOF
 }
@@ -246,6 +247,60 @@ help-pe() {
 ================================================================================
 PE_EOF
 }
+
+help-leetcode() {
+  cat <<'LEET_EOF'
+================================================================================
+                    LEETCODE.NVIM & SOLUTIONS GUIDE
+================================================================================
+
+1. LAUNCH & SESSION MANAGEMENT:
+   nvim leetcode.nvim          -> Start Neovim directly in LeetCode mode
+   :Leet                       -> Open LeetCode dashboard from inside Neovim
+   :Leet exit                  -> Close LeetCode session
+   :Leet cookie update         -> Prompt to paste session cookie (login)
+   :Leet cookie delete         -> Sign out and clear stored cookie
+   :Leet cache update          -> Refresh problem cache from LeetCode
+
+2. FINDING & OPENING PROBLEMS:
+   :Leet list                  -> Open problem picker (search all problems)
+   :Leet list status=todo difficulty=easy -> Filter unsolved easy problems
+   :Leet daily                 -> Open today's daily problem
+   :Leet random                -> Open random problem
+   :Leet random difficulty=medium tags=tree -> Random medium tree problem
+   :Leet tabs                  -> Switch between open problem tabs
+
+3. SOLVING, RUNNING & SUBMITTING:
+   :Leet run (or :Leet test)   -> Run solution against problem testcases
+   :Leet submit                -> Submit code to LeetCode
+   :Leet console               -> Open/toggle testcase and results console
+   :Leet desc                  -> Toggle problem description panel
+   :Leet hints                 -> View problem hints
+   :Leet info                  -> View problem details and acceptance rate
+   :Leet open                  -> Open current problem in web browser
+   :Leet yank                  -> Copy code snippet to system clipboard
+   :Leet reset                 -> Reset editor code to starting template
+   :Leet last_submit           -> Restore latest accepted submission
+
+4. POPUP & CONSOLE KEYBINDINGS:
+   q                           -> Close any popup, console, or menu
+   <Enter>                     -> Confirm selection in dashboard / pickers
+   H                           -> (In console) Focus testcases panel
+   L                           -> (In console) Focus results panel
+   r                           -> (In console) Reset testcases to default
+   U                           -> (In console) Use custom testcase
+
+5. PROGRESS TRACKING & GIT REPO (~/projects/leetcode-solutions):
+   cd ~/projects/leetcode-solutions
+   python3 scripts/track.py        -> Update README.md progress table
+   python3 scripts/track.py --push -> Auto-update, commit, and push to GitHub
+   python3 scripts/track.py --commit "Solve Two Sum in Go" --push
+
+💡 PRO TIP: Exiting LeetCode in Neovim auto-updates your README.md table!
+================================================================================
+LEET_EOF
+}
+alias help-lc='help-leetcode'
 
 # Antigravity CLI with auto-approved tool permissions
 alias agy-y='agy --dangerously-skip-permissions'
