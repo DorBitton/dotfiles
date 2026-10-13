@@ -28,7 +28,7 @@ source ~/.bashrc
 | **Shell** | **Bash (`/bin/bash`)** | Clean POSIX-first shell, fast git-branch prompt, smart history |
 | **Multiplexer** | **Tmux 3.6** | Default `Ctrl-b` prefix, 1-based indexing, top status bar, OS clipboard sync |
 | **Terminal** | **Alacritty** | GPU-accelerated, Catppuccin Mocha theme, zero latency |
-| **Editor** | **LazyVim (Neovim)** | Modular Neovim setup with LSP, treesitter, formatting |
+| **Editor** | **LazyVim (Neovim)** | Modular Neovim setup with LSP, treesitter, formatting, and `leetcode.nvim` |
 | **Dev Containers**| **DevPod + Docker** | Isolated development environments (`devpod up .` and `sandbox`) |
 | **AI CLI** | **Google Antigravity (`agy`)** | Unix-piped Gemini 3.7 Flash queries (`?? "question"`) |
 | **Language** | **Go 1.26** | `$GOPATH` and `~/go/bin` in `$PATH` |
@@ -45,6 +45,7 @@ Run these commands directly in your terminal at any time:
 * `help-tmux` : Default Tmux keybindings, splits, and session commands
 * `help-containers` : Disposable Docker sandboxes and DevPod guide
 * `help-pe` : Bash Parameter Expansion reference (`${VAR:-default}`, pattern stripping, etc.)
+* `help-leetcode` : LeetCode.nvim workflow, solving commands, and Git tracking guide (alias: `help-lc`)
 
 ---
 
@@ -57,4 +58,5 @@ sandbox             # Launch instant disposable Ubuntu sandbox
 sandbox python:3.12 # Launch instant Python sandbox
 sandbox golang      # Launch instant Go sandbox
 btop                # Launch hardware & process monitor
+nvim leetcode.nvim  # Open LeetCode dashboard directly in Neovim
 ```
