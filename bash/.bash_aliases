@@ -254,7 +254,15 @@ help-leetcode() {
                     LEETCODE.NVIM & SOLUTIONS GUIDE
 ================================================================================
 
-1. LAUNCH & SESSION MANAGEMENT:
+1. FIRST TIME SETUP (AUTHENTICATION):
+   LeetCode requires your session cookie to load problems and run submissions:
+   a. Log in to https://leetcode.com in your browser.
+   b. Open Developer Tools (F12), go to Application or Storage tab -> Cookies -> https://leetcode.com.
+   c. Copy the values of LEETCODE_SESSION and csrftoken in this format:
+      LEETCODE_SESSION=your_session_value; csrftoken=your_csrf_token;
+   d. In Neovim, run :Leet and press 's' (or :Leet cookie update), paste, and press Enter.
+
+2. LAUNCH & SESSION MANAGEMENT:
    nvim leetcode.nvim          -> Start Neovim directly in LeetCode mode
    :Leet                       -> Open LeetCode dashboard from inside Neovim
    :Leet exit                  -> Close LeetCode session
@@ -262,7 +270,7 @@ help-leetcode() {
    :Leet cookie delete         -> Sign out and clear stored cookie
    :Leet cache update          -> Refresh problem cache from LeetCode
 
-2. FINDING & OPENING PROBLEMS:
+3. FINDING & OPENING PROBLEMS:
    :Leet list                  -> Open problem picker (search all problems)
    :Leet list status=todo difficulty=easy -> Filter unsolved easy problems
    :Leet daily                 -> Open today's daily problem
@@ -270,7 +278,7 @@ help-leetcode() {
    :Leet random difficulty=medium tags=tree -> Random medium tree problem
    :Leet tabs                  -> Switch between open problem tabs
 
-3. SOLVING, RUNNING & SUBMITTING:
+4. SOLVING, RUNNING & SUBMITTING:
    :Leet run (or :Leet test)   -> Run solution against problem testcases
    :Leet submit                -> Submit code to LeetCode
    :Leet console               -> Open/toggle testcase and results console
@@ -282,7 +290,7 @@ help-leetcode() {
    :Leet reset                 -> Reset editor code to starting template
    :Leet last_submit           -> Restore latest accepted submission
 
-4. POPUP & CONSOLE KEYBINDINGS:
+5. POPUP & CONSOLE KEYBINDINGS:
    q                           -> Close any popup, console, or menu
    <Enter>                     -> Confirm selection in dashboard / pickers
    H                           -> (In console) Focus testcases panel
@@ -290,7 +298,7 @@ help-leetcode() {
    r                           -> (In console) Reset testcases to default
    U                           -> (In console) Use custom testcase
 
-5. PROGRESS TRACKING & GIT REPO (~/projects/leetcode-solutions):
+6. PROGRESS TRACKING & GIT REPO (~/projects/leetcode-solutions):
    cd ~/projects/leetcode-solutions
    python3 scripts/track.py        -> Update README.md progress table
    python3 scripts/track.py --push -> Auto-update, commit, and push to GitHub
